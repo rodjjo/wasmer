@@ -7,7 +7,7 @@ use std::mem;
 use std::time::SystemTime;
 
 #[cfg(not(target_os = "windows"))]
-use libc::{clockid_t, time as libc_time, timegm as libc_timegm, tm as libc_tm};
+use libc::{clockid_t, time as libc_time, timegm as libc_timegm, tm as libc_tm, off_t};
 #[cfg(not(target_os = "windows"))]
 use std::ffi::CString;
 
@@ -319,7 +319,7 @@ pub fn _time(ctx: FunctionEnvMut<EmEnv>, time_p: u32) -> i32 {
 
     unsafe {
         let memory = ctx.data().memory(0);
-        let time_p_addr = emscripten_memory_pointer!(memory.view(&ctx), time_p) as *mut i64;
+        let time_p_addr = emscripten_memory_pointer!(memory.view(&ctx), time_p) as *mut off_t;
         libc_time(time_p_addr) as i32 // TODO review i64
     }
 }

@@ -59,7 +59,7 @@ fn resize_heap(ctx: &mut FunctionEnvMut<EmEnv>, requested_size: u32) -> u32 {
         } else {
             new_size = usize::min(
                 align_up((3 * new_size + 0x8000_0000) / 4, WASM_PAGE_SIZE),
-                WASM_PAGE_SIZE * WASM_MAX_PAGES as usize,
+                (WASM_PAGE_SIZE as u16 * WASM_MAX_PAGES as u16) as usize,
             );
         }
     }

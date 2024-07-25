@@ -30,7 +30,7 @@ pub fn platform_clock_res_get(
     };
 
     let t_out = (timespec_out.tv_sec * 1_000_000_000).wrapping_add(timespec_out.tv_nsec);
-    Ok(t_out)
+    Ok(t_out as i64)
 }
 
 pub fn platform_clock_time_get(
@@ -57,5 +57,5 @@ pub fn platform_clock_time_get(
     };
 
     let t_out = (timespec_out.tv_sec * 1_000_000_000).wrapping_add(timespec_out.tv_nsec);
-    Ok(t_out)
+    Ok(t_out as i64)
 }

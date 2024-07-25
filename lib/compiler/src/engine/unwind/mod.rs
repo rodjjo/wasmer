@@ -2,7 +2,10 @@ cfg_if::cfg_if! {
     if #[cfg(all(windows, target_arch = "x86_64"))] {
         mod windows_x64;
         pub use self::windows_x64::*;
-    } else if #[cfg(unix)] {
+    } else if #[cfg(all(unix, target_arch = "x86_64"))] {
+        mod systemv;
+        pub use self::systemv::*;
+    } else if #[cfg(all(unix, target_arch = "x86"))] {
         mod systemv;
         pub use self::systemv::*;
     } else {

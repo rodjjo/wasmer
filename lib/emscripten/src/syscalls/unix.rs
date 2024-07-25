@@ -885,7 +885,7 @@ pub fn ___syscall180(ctx: FunctionEnvMut<EmEnv>, _which: c_int, mut varargs: Var
         let zero: u32 = varargs.get(&ctx);
         assert_eq!(zero, 0);
     }
-    let offset: i64 = varargs.get(&ctx);
+    let offset: off_t = varargs.get(&ctx);
 
     let buf_ptr = emscripten_memory_pointer!(ctx.data().memory(0).view(&ctx), buf) as _;
 
@@ -902,7 +902,7 @@ pub fn ___syscall181(ctx: FunctionEnvMut<EmEnv>, _which: c_int, mut varargs: Var
         let zero: u32 = varargs.get(&ctx);
         assert_eq!(zero, 0);
     }
-    let offset: i64 = varargs.get(&ctx);
+    let offset: off_t = varargs.get(&ctx);
 
     let buf_ptr = emscripten_memory_pointer!(ctx.data().memory(0).view(&ctx), buf) as _;
     let status = unsafe { pwrite(fd, buf_ptr, count as _, offset) as _ };

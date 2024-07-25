@@ -1,6 +1,6 @@
 //! Module for Dummy unwind registry.
 
-use wasmer_types::CompiledFunctionUnwindInfo;
+use wasmer_types::CompiledFunctionUnwindInfoReference;
 
 /// Represents a registry of function unwind information when the host system
 /// support any one in specific.
@@ -18,7 +18,7 @@ impl DummyUnwindRegistry {
         _base_address: usize,
         _func_start: u32,
         _func_len: u32,
-        _info: &CompiledFunctionUnwindInfo,
+        _info: &CompiledFunctionUnwindInfoReference,
     ) -> Result<(), String> {
         // Do nothing
         Ok(())

@@ -46,6 +46,7 @@ pub use wast::*;
 #[cfg(feature = "static-artifact-create")]
 pub use {create_obj::*, gen_c_header::*};
 
+#[allow(unused_imports)]
 #[cfg(feature = "journal")]
 pub use self::journal::*;
 pub use self::{

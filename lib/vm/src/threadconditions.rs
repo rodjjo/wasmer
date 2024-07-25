@@ -87,7 +87,7 @@ impl ThreadConditions {
         }
 
         // fetch the notifier
-        if self.inner.map.len() >= 1 << 32 {
+        if self.inner.map.len() >= usize::MAX {
             return Err(WaiterError::TooManyWaiters);
         }
         self.inner.map.entry(dst).or_default().push(NotifyWaiter {
