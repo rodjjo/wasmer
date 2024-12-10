@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["create_nonce","generate_deploy_token","publish_deploy_app_raw"]};
